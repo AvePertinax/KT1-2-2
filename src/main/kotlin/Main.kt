@@ -1,7 +1,18 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    var input: String?
+    do {
+        print("Введите количество лайков (или 'end' для выхода): ")
+        input = readLine()
+        if (input != null && input != "end") {
+            val likes = input.toIntOrNull() ?: 0
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+            val peopleSuffix = if (likes % 10 == 1 && likes % 100 != 11) {
+                "человеку"
+            } else {
+                "людям"
+            }
+
+            println("Понравилось $likes $peopleSuffix")
+        }
+    } while (input != "end")
 }
